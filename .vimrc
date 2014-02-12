@@ -38,11 +38,11 @@ set expandtab
 set shiftwidth=2
 set wildmenu
 
-" execute and run g++ files
-map <F8> : !g++ % && ./a.out <CR>
-
 " fix odd backspace behaviour
 set backspace=start,eol,indent
+
+" powerline status always visible
+set laststatus=2
 
 " disable cursor keys in navigation
 map <Left> <Nop>
@@ -51,7 +51,6 @@ map <Up> <Nop>
 map <Down> <Nop>
 
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType style set omnifunc=csscomplete#CompleteCSS
 
 " command-t directory ignore
 set wildignore+=bower_components
@@ -60,14 +59,11 @@ set wildignore+=node_modules
 " Disable Syntastic for HTML
 let syntastic_mode_map = { 'passive_filetypes': ['html'] }
 
-" powerline status always visible
-set laststatus=2
-
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 
-" powerline escape fix
+" powerline slow escape fix
 if ! has('gui_running')
     set ttimeoutlen=10
     augroup FastEscape
@@ -76,7 +72,3 @@ if ! has('gui_running')
         au InsertLeave * set timeoutlen=1000
     augroup END
 endif
-
-" Unite file search
-" nnoremap <C-p> :Unite file_rec/async<cr>
-" call unite#custom#source('file_rec/async', 'ignore_pattern', 'node_modules/\|bower_components/')
