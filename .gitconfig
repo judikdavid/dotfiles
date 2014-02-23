@@ -1,0 +1,27 @@
+[user]
+	name = "David Judik "
+	email = judik.david@gmail.com
+[push]
+	default = matching
+[core]
+	editor = /usr/local/Cellar/vim/7.4.052/bin/vim 
+[alias]
+    co = checkout
+    ci = commit
+    rb = pull --rebase
+    st = status
+[color]
+	ui = true
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[difftool "vimdiff"]
+	path = /usr/local/Cellar/vim/7.4.052/bin/vimdiff
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool "vimdiff"]
+	path = /usr/local/Cellar/vim/7.4.052/bin/vimdiff
+[merge "tool"]
+	prompt = false
