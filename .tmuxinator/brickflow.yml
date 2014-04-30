@@ -1,0 +1,29 @@
+# ~/.tmuxinator/brickflow.yml
+
+name: brickflow
+root: ~/Sites/brickflow/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: mongod
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: mongod
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - vim
+        - grunt allwatch
+  - shell: # this will run shell
+  - mongo-local: mongo brickflow
+  - mongo-prod: mongo ds061938.mongolab.com:61938/brickflow -u brickflow -p L1711MNaK
