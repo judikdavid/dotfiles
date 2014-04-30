@@ -4,7 +4,7 @@
 [push]
 	default = matching
 [core]
-	editor = /usr/local/Cellar/vim/7.4.052/bin/vim 
+	editor = vim 
 [alias]
     co = checkout
     ci = commit
@@ -17,11 +17,11 @@
 [difftool]
 	prompt = false
 [difftool "vimdiff"]
-	path = /usr/local/Cellar/vim/7.4.052/bin/vimdiff
+	path = vimdiff
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
 [mergetool "vimdiff"]
-	path = /usr/local/Cellar/vim/7.4.052/bin/vimdiff
+	path = vimdiff
 [merge "tool"]
 	prompt = false
