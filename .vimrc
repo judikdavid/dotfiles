@@ -72,3 +72,5 @@ if ! has('gui_running')
         au InsertLeave * set timeoutlen=1000
     augroup END
 endif
+" map key for vimux command
+map <Leader>vp :VimuxPromptCommand<CR>
