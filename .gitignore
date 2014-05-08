@@ -1,2 +1,1 @@
-  /.tmuxinator/brickflow.yml
-  /.tmuxinator/fitbalance.yml
+.tmuxinator/*.yml
