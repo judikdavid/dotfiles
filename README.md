@@ -4,6 +4,6 @@ dotfiles
 My dot files repository
 
 I'm using:
-- bash & bash-it
+- bash
 - vim
 - tmux with tmuxinator
