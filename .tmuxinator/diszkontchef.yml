@@ -1,7 +1,7 @@
-# ~/.tmuxinator/brickflow.yml
+# ~/.tmuxinator/foodexpress.yml
 
-name: brickflow
-root: ~/Sites/brickflow-app/
+name: diszkontchef
+root: ~/Sites/diszkontchef/
 
 # Optional tmux socket
 # socket_name: foo
@@ -20,10 +20,8 @@ root: ~/Sites/brickflow-app/
 
 windows:
   - editor:
-      layout: e062,178x51,0,0{89x51,0,0,88x51,90,0[88x25,90,0,88x25,90,26]}
+      layout: main-vertical
       panes:
         - vim
-        - # shell
-        - grunt allwatch
-  - shell: # shell
-  - mongo: mongo brickflow 
+        - cd public_html && grunt watch
+  - shell: # jush shell 

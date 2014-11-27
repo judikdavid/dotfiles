@@ -1,7 +1,7 @@
 # ~/.tmuxinator/brickflow.yml
 
-name: brickflow
-root: ~/Sites/brickflow-app/
+name: brickflow-api
+root: ~/Sites/brickflow-api
 
 # Optional tmux socket
 # socket_name: foo
@@ -24,6 +24,6 @@ windows:
       panes:
         - vim
         - # shell
-        - grunt allwatch
+        - # shell
   - shell: # shell
   - mongo: mongo brickflow 
