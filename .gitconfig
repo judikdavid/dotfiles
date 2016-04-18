@@ -2,7 +2,7 @@
 	name = "David Judik "
 	email = judik.david@gmail.com
 [push]
-	default = matching
+	default = current
 [core]
 	editor = vim 
 [alias]

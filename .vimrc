@@ -11,13 +11,23 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-commentary'
+Plugin 'gregsexton/gitv'
 Plugin 'tyru/open-browser.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'ronny/birds-of-paradise.vim'
+"Plugin 'ronny/birds-of-paradise.vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'elzr/vim-json'
+"Plugin '0x0dea/vim-molasses'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'rking/ag.vim'
+Plugin 'mxw/vim-jsx'
+Plugin 'benmills/vimux'
+Plugin 'pangloss/vim-javascript'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -32,9 +42,9 @@ filetype plugin indent on
 
 syntax enable
 set background=dark
-colorscheme birds-of-paradise
+colorscheme solarized
 
-set nu
+set relativenumber
 set ruler
 
 set hidden
@@ -42,7 +52,7 @@ set nobackup
 set noswapfile
 
 set nowrap        " don't wrap lines
-set tabstop=4     " a tab is four spaces
+set tabstop=2     " a tab is four spaces
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
 set autoindent    " always set autoindenting on
@@ -60,6 +70,7 @@ set incsearch     " show search matches as you type
 set expandtab
 set shiftwidth=2
 set wildmenu
+set previewheight=20
 
 " fix odd backspace behaviour
 set backspace=start,eol,indent
@@ -91,20 +102,55 @@ let syntastic_mode_map = { 'passive_filetypes': ['html'] }
     "augroup END
 "endif
 
-" map key for vimux command
+" Prompt for a command to run
 map <Leader>vp :VimuxPromptCommand<CR>
 
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+
 " ctrlp ignore
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|cache\|plugins'
+let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git\|cache\'
 
 " ctrlp butter hotkey
-:nmap ; :CtrlPBuffer<CR>
+:nmap , :CtrlPBuffer<CR>
 
 " style files css syntax
 au BufNewFile,BufRead *.scss set filetype=css
 
-"autocmd InsertEnter * :set number
-"autocmd InsertLeave * :set relativenumber
+" switch between absolute and relative number lines
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+
+:au FocusLost * :set number
+:au FocusGained * :set relativenumber
 
 set undofile
 set undodir=~/.vim-undo
+
+" node_modules gf
+set suffixesadd+=.js
+set path+=$PWD/node_modules
+
+" .vimrc tip to syntax highlight Node bash scripts
+au! BufNewFile,BufRead,BufWrite * if getline(1) =~ '^\#!.*node' | setf javascript | endif
+
+" set 256 color
+set t_Co=256
+
+let g:syntastic_eslint_exec='/usr/local/bin/eslint'
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_javascript_checkers = ['jshint']
+
+set clipboard=unnamed " use the system clipboard
+
+" tags
+set tags=./tags,tags;$HOME
+
+" spell
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd FileType gitcommit setlocal spell
+
+set complete+=kspell
+
+set exrc

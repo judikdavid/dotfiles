@@ -1,6 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/app/routes'
-let g:netrw_dirhist_2='/Users/judikdavid/dotfiles'
-let g:netrw_dirhist_3='/Users/judikdavid'
-let g:netrw_dirhist_4='/Users/judikdavid/dotfiles'
+let g:netrw_dirhist_cnt =0

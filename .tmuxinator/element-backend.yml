@@ -1,13 +1,13 @@
-# ~/.tmuxinator/brickflow.yml
+# ~/.tmuxinator/element-backend.yml
 
-name: brickflow-api
-root: ~/Sites/brickflow-api
+name: element-backend
+root: ~/Sites/element-backend/
 
 # Optional tmux socket
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-# pre: sudo /etc/rc.d/mysqld start
+#pre: open http://localhost:3000 
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -20,10 +20,9 @@ root: ~/Sites/brickflow-api
 
 windows:
   - editor:
-      layout: e062,178x51,0,0{89x51,0,0,88x51,90,0[88x25,90,0,88x25,90,26]}
+      layout: main-vertical
       panes:
         - vim
-        - # shell
-        - # shell
-  - shell: # shell
-  - mongo: mongo brickflow 
+        - #
+        - npm run nodemon
+  - shell: # 

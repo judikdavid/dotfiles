@@ -1,7 +1,7 @@
-# ~/.tmuxinator/foodexpress.yml
+# ~/.tmuxinator/ems.yml
 
-name: diszkontchef
-root: ~/Sites/diszkontchef/
+name: Emarsys
+root: ~/sms-adapter-service/new
 
 # Optional tmux socket
 # socket_name: foo
@@ -23,5 +23,6 @@ windows:
       layout: main-vertical
       panes:
         - vim
-        - cd public_html && grunt watch
-  - shell: # jush shell 
+        - gulp features-watch
+        - gulp server-test-watch
+  - shell: # 

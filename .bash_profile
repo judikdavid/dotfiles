@@ -6,7 +6,7 @@ done
 unset file
 
 # init z   https://github.com/rupa/z
-# . ~/code/z/z.sh
+. `brew --prefix`/etc/profile.d/z.sh
 
 # init rvm
 # source ~/.rvm/scripts/rvm
@@ -28,6 +28,12 @@ complete -W "NSGlobalDomain" defaults
 # format ls
 alias ls="ls -GpFh"
 
+# gtypist best score alias
+alias gt="gtypist -b"
+
+# syntax highlight js code
+alias high="pbpaste | highlight --syntax=js -O rtf | pbcopy"
+
 # fix file limit for grunt and node
 ulimit -S -n 2048
 
@@ -39,3 +45,11 @@ stty -ixon -ixoff
 
 # default editor
 export EDITOR='vim'
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH="/usr/local/sbin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+#the fuck
+eval "$(thefuck --alias)"
