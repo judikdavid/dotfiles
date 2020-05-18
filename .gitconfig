@@ -4,7 +4,7 @@
 [push]
 	default = current
 [core]
-	editor = vim 
+	editor = vim
 [alias]
     co = checkout
     ci = commit
@@ -25,3 +25,7 @@
 	path = vimdiff
 [merge "tool"]
 	prompt = false
+[github]
+	user = judikdavid
+[web]
+	browser = open

@@ -10,24 +10,32 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-commentary'
 Plugin 'gregsexton/gitv'
-Plugin 'tyru/open-browser.vim'
-Plugin 'kien/ctrlp.vim'
-"Plugin 'ronny/birds-of-paradise.vim'
-Plugin 'scrooloose/syntastic'
-"Plugin 'scrooloose/nerdcommenter'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'elzr/vim-json'
-"Plugin '0x0dea/vim-molasses'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'rking/ag.vim'
-Plugin 'mxw/vim-jsx'
 Plugin 'benmills/vimux'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'vim-scripts/vim-soy'
+Plugin 'flowtype/vim-flow'
+Plugin 'w0rp/ale'
+Plugin 'junegunn/fzf.vim'
+Plugin 'henrik/vim-indexed-search'
+Plugin 'morhetz/gruvbox'
+Plugin 'jremmen/vim-ripgrep'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'altercation/vim-colors-solarized'
+" Plugin 'yuttie/comfortable-motion.vim'
+
+" ale config
+" let g:ale_linter_aliases = {'javascript': 'css'}
+" let g:ale_linters = {'javascript': ['stylelint', 'eslint', 'flow']}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,7 +49,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 filetype plugin indent on
 
 syntax enable
-set background=dark
+set background=light
 colorscheme solarized
 
 set relativenumber
@@ -52,7 +60,6 @@ set nobackup
 set noswapfile
 
 set nowrap        " don't wrap lines
-set tabstop=2     " a tab is four spaces
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
 set autoindent    " always set autoindenting on
@@ -67,8 +74,8 @@ set smarttab      " insert tabs on the start of a line according to
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
 
-set expandtab
-set shiftwidth=2
+:set tabstop=2
+:set shiftwidth=2
 set wildmenu
 set previewheight=20
 
@@ -86,33 +93,18 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 " Disable Syntastic for HTML
 let syntastic_mode_map = { 'passive_filetypes': ['html'] }
 
-"python from powerline.vim import setup as powerline_setup
-"python powerline_setup()
-"python del powerline_setup
-" powerline status always visible
-" set laststatus=2
-
-" powerline slow escape fix
-"if ! has('gui_running')
-    "set ttimeoutlen=10
-    "augroup FastEscape
-        "autocmd!
-        "au InsertEnter * set timeoutlen=0
-        "au InsertLeave * set timeoutlen=1000
-    "augroup END
-"endif
-
 " Prompt for a command to run
 map <Leader>vp :VimuxPromptCommand<CR>
 
 " Run last command executed by VimuxRunCommand
 map <Leader>vl :VimuxRunLastCommand<CR>
 
-" ctrlp ignore
-let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git\|cache\'
-
-" ctrlp butter hotkey
-:nmap , :CtrlPBuffer<CR>
+set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
+nmap , :Buffers<CR>
+nmap <Leader>r :Tags<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>a :Rg<CR>
 
 " style files css syntax
 au BufNewFile,BufRead *.scss set filetype=css
@@ -137,12 +129,8 @@ au! BufNewFile,BufRead,BufWrite * if getline(1) =~ '^\#!.*node' | setf javascrip
 " set 256 color
 set t_Co=256
 
-let g:syntastic_eslint_exec='/usr/local/bin/eslint'
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_javascript_checkers = ['jshint']
-
-set clipboard=unnamed " use the system clipboard
+" use the system clipboard
+set clipboard=unnamed 
 
 " tags
 set tags=./tags,tags;$HOME
@@ -150,7 +138,10 @@ set tags=./tags,tags;$HOME
 " spell
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
+autocmd FileType text setlocal spell
 
 set complete+=kspell
 
 set exrc
+
+set notermguicolors
